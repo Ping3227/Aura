@@ -26,7 +26,7 @@ class AURA_API AAuraPlayerController : public APlayerController
 public :
 	AAuraPlayerController();
 	UFUNCTION(Client, Reliable)
-	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter);
+	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter, bool bBlockedHit, bool bCriticalHit);
 protected:
 	virtual void BeginPlay() override;
 	virtual void PlayerTick(float DeltaTime) override;
@@ -68,10 +68,10 @@ private:
 	bool bTargeting = false;
 
 	UPROPERTY(EditDefaultsOnly)
-		float AutoRunAcceptanceRadius = 50.f;
+	float AutoRunAcceptanceRadius = 50.f;
 
 	UPROPERTY(VisibleAnywhere)
-		TObjectPtr<USplineComponent> Spline;
+	TObjectPtr<USplineComponent> Spline;
 
 	void AutoRun();
 
